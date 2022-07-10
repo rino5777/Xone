@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+    {% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+           
+          </div>
+        <div class="col-4">
+
+            
+       
+                      <h3 class="margin-bottom-1x">Регистрация</h3>
+                      
+                      <form class="row" method="POST">
+                          {% csrf_token %}                      
+                          <div class="mb-3">
+                            <label for="reg-fn">Логин</label>
+                            {{ form.username }}  
+                        </div>
+                          <div class="mb-3">
+                            <label for="reg-pass">Пароль</label>
+                            {% comment %} <input class="form-control" type="password" id="reg-pass" required> {% endcomment %}
+                            {{ form.password1 }}  
+                        </div>
+                          <div class="mb-3">
+                            <label for="reg-pass-confirm">Подтвердите пароль</label>
+                            {% comment %} <input class="form-control" type="password" id="reg-pass-confirm" required> {% endcomment %}
+                            {{ form.password2 }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                      </form>
+          
+                  
+                 
+               
+    </div>
+    <div class="col-6">
+    </div>
+      
+    </div>
+</div>
+{% endblock content %}

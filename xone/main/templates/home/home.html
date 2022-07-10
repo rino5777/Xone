@@ -1,0 +1,74 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container mt-5"  >
+    <div class="row">
+        {% if messages %}
+        <div class="alert alert-success">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">
+                    {{ message|safe }}
+                    <a href="{% url 'main:main_page' %}" class="close">✖</a>
+                </li>
+            {% endfor %}
+       </div>
+    {% endif %}
+
+    
+
+
+        <h1>Привет {{user.username}}</h1>
+        <hr>
+          {% if request.user.is_authenticated %}
+        <div class="col-6">
+            <h4>Cокращение ссылок </h4>
+           <div class = 'mx-auto'>
+                <form  method="POST" action="">
+                    {% csrf_token %}
+                    {% for elem in form %}
+                    {{elem}}
+                    {% endfor %}
+                    
+                    <button type="submit" class="btn btn-primary mb-3 mt-2">Сократить</button> 
+
+                </form>
+                <table class="table table-sm ">
+                    <thead>
+                <tr class="table-success">
+                    <tb>Ваша ссылка:</tb>
+                 <th>
+                    {% if actual_value %}
+                    <a class="dropdown nav-item" href="{{actual_value}}" target="_blank">http://mytestdom.site/u/{{actual_key}}</a>
+                    {% else %}
+                    {% endif %}
+                 </th>
+                </thead>
+                </tr>
+            </table>
+            </div>
+        </div>
+        
+        <div class="col-4">
+           {% if actual_value %}
+            <img  src="img/testqr.jpg"  width="150" height = '150'>
+            {% else %}
+            {% endif %}
+        </div>
+        
+        
+        {% else %}
+        <h3> Надо зайти или зарегистрироваться  :) </h3>
+        {% endif %}
+        </div>
+        
+        <div class="col-2">
+        </div>
+    </div>
+</div>         
+{% comment %} {% for i in history %}
+
+<p><button><a href="{% url 'main:urlre' i.short_url %}">{{ i.short_url}}</a></button></p>
+{% endfor %} {% endcomment %}
+{% endblock content %}

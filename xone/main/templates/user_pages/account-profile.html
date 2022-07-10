@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+{% load static %}
+
+    {% block content %}
+<div class="container mt-5"  >
+    <div class="row">
+        <h1>Итория сокращений {{user.username}}</h1>
+        <hr>
+        <table class="table table-bordered">
+            <thead class="thead-dark" >
+            <tr>
+                <th class="col-sm-4">Укороченная ссылкка</th>
+                <th class="col-6">Полная ссылка</th>
+                
+            </tr>
+            </thead>
+            {% for short,long in ownerlist.items %}
+            
+            <tbody>
+               
+            <tr> 
+                
+                <th ><a class="dropdown nav-item" href="{% url 'main:urlre' short %}" target="_blank">http://u/mytestdom.site/{{short}} </a></th>
+                <td scope="row"><a class="dropdown nav-item" href="{{long}}" target="_blank">{{long}}</a></td>
+                
+                
+            </tr>
+            </tbody>
+            {% empty %}
+            <tr>
+                
+                <td colspan="2">Тут пока пусто...</td>
+            </tr>
+            {% endfor %}
+        </table>
+            </div>
+        </div>
+        
+        <div class="col-4">
+        </div>
+        
+        </div>
+        <div class="col-2">
+        </div>
+    </div>
+</div> 
+
+{% endblock content %}
