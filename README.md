@@ -1,6 +1,6 @@
 # Иксван
-`проект` на django по тз в папке 'xone'<br>
-sql запросы по тз sql в папке 'test_task_sql'
+Проект на django по тз в папке 'xone'<br>
+Sql запросы по тз sql в папке 'test_task_sql'
 <hr>
 
 
